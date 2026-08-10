@@ -1,17 +1,28 @@
-# AI Review Guidelines
+# Repository AI Instructions
 
-Follow the assigned reviewer role and review only within its responsibility.
+## 🏗 Tech Stack
+- **Backend:** Java 21, Spring Boot 3.2+
+- **Database:** Spring Data JPA, PostgreSQL
+- **Infrastructure:** Docker, GitHub Actions
 
-Review only the changes introduced in the Pull Request.
+## 📏 Coding Standards
+- Use Java `record` types for DTOs.
+- Constructor injection via Lombok `@RequiredArgsConstructor`.
+- Adhere to `jakarta.validation` constraints for input.
+- Use `FetchType.LAZY` for JPA relationships.
 
-Provide clear, concise, and actionable feedback.
+## 🔍 AI Reviewer Responsibilities
+- **Implementation:** Verify logic against PR descriptions and Java 21 idioms.
+- **Testing:** Check for JUnit 5/AssertJ and appropriate test slices (e.g., `@DataJpaTest`).
+- **Architecture:** Ensure strict Controller -> Service -> Repository separation.
+- **Security:** Scan for SQL injection in JPQL and proper Spring Security usage.
+- **DevOps:** Review Dockerfile and Workflow efficiency.
+- **Final Review:** Provide a summary of merge readiness.
 
-Explain why each suggestion improves the code.
-
-Suggest improvements only when they provide real value.
-
-Do not make suggestions based solely on personal preference.
-
-Avoid repeating feedback already covered by another reviewer.
-
-If no meaningful improvements are found, state that no issues were found within your review scope.
+## 📝 Review Output Format
+- Provide clear, actionable feedback with code suggestions.
+- **Severities:**
+  - `🔴 Critical`: Bugs/Security issues.
+  - `🟠 High`: Performance/Architecture issues.
+  - `🟡 Medium`: Missing tests/Standard violations.
+  - `🟢 Low`: Style/Typos.
